@@ -3,13 +3,28 @@ import { Light } from "./Light";
 
 export function TrafficLight() {
 	const [redColor, setRedColor] = useState("rgb(153, 10, 10)");
-	const [yellowColor, setYellowColor] = useState("rgb(226, 187, 14)");
+	const [yellowColor, setYellowColor] = useState(" rgb(185, 127, 1)");
 	const [greenColor, setGreenColor] = useState("rgb(2, 97, 2)");
 
 	function changeColor(colorP) {
-		if (colorP === "rgb(153, 10, 10)") setRedColor("rgb(255, 5, 5)");
-		if (colorP === "rgb(226, 187, 14)") setYellowColor("rgb(248, 252, 5)");
-		if (colorP === "rgb(2, 97, 2)") setGreenColor("rgb(3, 250, 3)");
+		//Red
+		if (colorP === "rgb(153, 10, 10)") {
+			setRedColor("rgb(255, 5, 5)");
+			setYellowColor(" rgb(185, 127, 1)");
+			setGreenColor("rgb(2, 97, 2)");
+		}
+		//Yellow
+		if (colorP === " rgb(185, 127, 1)") {
+			setYellowColor("rgb(248, 252, 5)");
+			setRedColor("rgb(153, 10, 10)");
+			setGreenColor("rgb(2, 97, 2)");
+		}
+		//Green
+		if (colorP === "rgb(2, 97, 2)") {
+			setGreenColor("rgb(3, 250, 3)");
+			setYellowColor(" rgb(185, 127, 1)");
+			setRedColor("rgb(153, 10, 10)");
+		}
 	}
 
 	return (
