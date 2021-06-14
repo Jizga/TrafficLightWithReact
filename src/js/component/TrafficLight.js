@@ -6,6 +6,9 @@ export function TrafficLight() {
 	const [yellowColor, setYellowColor] = useState(" rgb(185, 127, 1)");
 	const [greenColor, setGreenColor] = useState("rgb(2, 97, 2)");
 
+	//CAMBIAR CON SOLO UN STADO
+	const [color, setColor] = useState({});
+
 	function changeColor(colorP) {
 		//Red
 		if (colorP === "rgb(153, 10, 10)") {
@@ -35,27 +38,20 @@ export function TrafficLight() {
 			<div className="container d-flex justify-content-center">
 				<div className="row pt-4 pb-4 shadow bg-dark rounded myTrafficLight">
 					<div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-						<div onClick={() => changeColor(redColor)}>
-							<Light
-								color={redColor}
-								// changeColor={changeColor()}
-								// onClick={() => changeColor()}
-							/>
-						</div>
+						<Light
+							color={redColor}
+							changeColor={x => changeColor(x)}
+						/>
 
-						<div onClick={() => changeColor(yellowColor)}>
-							<Light
-								color={yellowColor}
-								// onClick={() => changeColor()}
-							/>
-						</div>
+						<Light
+							color={yellowColor}
+							changeColor={x => changeColor(x)}
+						/>
 
-						<div onClick={() => changeColor(greenColor)}>
-							<Light
-								color={greenColor}
-								// changeColor={changeColor()}
-							/>
-						</div>
+						<Light
+							color={greenColor}
+							changeColor={x => changeColor(x)}
+						/>
 					</div>
 				</div>
 			</div>
