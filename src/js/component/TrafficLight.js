@@ -1,34 +1,43 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Light } from "./Light";
 
 export function TrafficLight() {
-	const [redColor, setRedColor] = useState("rgb(153, 10, 10)");
-	const [yellowColor, setYellowColor] = useState(" rgb(185, 127, 1)");
-	const [greenColor, setGreenColor] = useState("rgb(2, 97, 2)");
+	const [selectedColor, setSelectedColor] = useState("");
 
-	//CAMBIAR CON SOLO UN STADO
-	const [color, setColor] = useState({});
+	const colors = {
+		red: {
+			light: "rgb(255, 5, 5)",
+			color: "rgb(153, 10, 10)"
+		},
+		yellow: {
+			light: "rgb(248, 252, 5)",
+			color: "rgb(185, 127, 1)"
+		},
+		green: {
+			light: "rgb(3, 250, 3)",
+			color: "rgb(2, 97, 2)"
+		}
+	};
 
-	function changeColor(colorP) {
-		//Red
-		if (colorP === "rgb(153, 10, 10)") {
-			setRedColor("rgb(255, 5, 5)");
-			setYellowColor(" rgb(185, 127, 1)");
-			setGreenColor("rgb(2, 97, 2)");
-		}
-		//Yellow
-		if (colorP === " rgb(185, 127, 1)") {
-			setYellowColor("rgb(248, 252, 5)");
-			setRedColor("rgb(153, 10, 10)");
-			setGreenColor("rgb(2, 97, 2)");
-		}
-		//Green
-		if (colorP === "rgb(2, 97, 2)") {
-			setGreenColor("rgb(3, 250, 3)");
-			setYellowColor(" rgb(185, 127, 1)");
-			setRedColor("rgb(153, 10, 10)");
-		}
-	}
+	const changeLigthedColor = e => {
+		setSelectedColor(e.target.id);
+	};
+
+	const arrColor = Object.keys(colors);
+
+	let light = arrColor.map((c, index) => {
+		let data = colors[c];
+		return (
+			<Light
+				key={index}
+				id={c}
+				color={data.color}
+				lightColor={data.light}
+				selected={selectedColor === c}
+				changeLigthedColor={changeLigthedColor}
+			/>
+		);
+	});
 
 	return (
 		<>
@@ -38,20 +47,7 @@ export function TrafficLight() {
 			<div className="container d-flex justify-content-center">
 				<div className="row pt-4 pb-4 shadow bg-dark rounded myTrafficLight">
 					<div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-						<Light
-							color={redColor}
-							changeColor={x => changeColor(x)}
-						/>
-
-						<Light
-							color={yellowColor}
-							changeColor={x => changeColor(x)}
-						/>
-
-						<Light
-							color={greenColor}
-							changeColor={x => changeColor(x)}
-						/>
+						{light}
 					</div>
 				</div>
 			</div>
