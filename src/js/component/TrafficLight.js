@@ -28,32 +28,37 @@ export function TrafficLight() {
 	}
 
 	return (
-		<div className="container d-flex justify-content-center mt-5">
-			<div className="row mt-5 w-25 pt-4 pb-4 shadow bg-dark rounded">
-				<div className="col-12 pl-4 pr-0">
-					<div onClick={() => changeColor(redColor)}>
-						<Light
-							color={redColor}
-							// changeColor={changeColor()}
-							// onClick={() => changeColor()}
-						/>
-					</div>
+		<>
+			<div className="d-flex justify-content-center">
+				<div className="shadow bg-dark" id="trafficLightPoster"></div>
+			</div>
+			<div className="container d-flex justify-content-center">
+				<div className="row pt-4 pb-4 shadow bg-dark rounded myTrafficLight">
+					<div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+						<div onClick={() => changeColor(redColor)}>
+							<Light
+								color={redColor}
+								// changeColor={changeColor()}
+								// onClick={() => changeColor()}
+							/>
+						</div>
 
-					<div onClick={() => changeColor(yellowColor)}>
-						<Light
-							color={yellowColor}
-							// onClick={() => changeColor()}
-						/>
-					</div>
+						<div onClick={() => changeColor(yellowColor)}>
+							<Light
+								color={yellowColor}
+								// onClick={() => changeColor()}
+							/>
+						</div>
 
-					<div onClick={() => changeColor(greenColor)}>
-						<Light
-							color={greenColor}
-							// changeColor={changeColor()}
-						/>
+						<div onClick={() => changeColor(greenColor)}>
+							<Light
+								color={greenColor}
+								// changeColor={changeColor()}
+							/>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
+		</>
 	);
 }

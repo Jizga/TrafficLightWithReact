@@ -5,7 +5,7 @@ export function Light(props) {
 	return (
 		<div
 			id="light"
-			className="p-5 w-50 rounded-circle mt-2 ml-5 mb-2"
+			className="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 p-5 rounded-circle mt-2"
 			style={{ backgroundColor: props.color }}>
 			{/* onClick={() => props.changeColor}> */}
 		</div>
